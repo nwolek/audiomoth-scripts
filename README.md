@@ -13,6 +13,16 @@ These scripts require the following command line tools:
 - [ImageMagick](https://imagemagick.org/) - "create, edit, compose, or convert bitmap images"
 - [ffmpeg](https://ffmpeg.org/) - "solution to record, convert and stream audio and video"
 
+## Basic Usage
+
+These scripts are designed to work on files in batches, using syntax like the following:
+
+```
+bash rename-by-date.sh *.WAV
+bash make-spectrogram-image.sh *.WAV
+bash make-spectrogram-movie.sh *.wav
+```
+
 ## Acknowledgements
 
 My research into using the AudioMoth for acoustic ecology is supported by the following:
