@@ -1,0 +1,88 @@
+/*
+# Copyright (c) 2020, lowkey digital studio
+# Author: Nathan Wolek
+# Usage of this file and its contents is governed by the MIT License
+
+# Adapted from CodePen example
+# source here: https://codepen.io/paulobrien/pen/LBrMxa
+# original author: Paul O'Brien
+*/
+
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+.intro {
+  max-width: 1280px;
+  margin: 1em auto;
+}
+.table-scroll {
+  position: relative;
+  width:100%;
+  z-index: 1;
+  margin: auto;
+  overflow: auto;
+  height: 720px; /* changed to increase height */
+}
+.table-scroll table {
+  width: 100%;
+  min-width: 1280px;
+  margin: auto;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.table-wrap {
+  position: relative;
+}
+.table-scroll th,
+.table-scroll td {
+  padding: 5px 10px;
+  border: 1px solid #000;
+  background: #fff;
+  vertical-align: top;
+  text-align: center; /* added to center td contents */
+}
+.table-scroll td.start-of-week { /* added to mark sunday as start of week */
+  background: #ffc2df;
+}
+.table-scroll th.start-of-hour { /* added to mark 00 minutes as start of hour */
+  background: #c2dfff;
+}
+.table-scroll thead th {
+  background: #333;
+  color: #fff;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+/* safari and ios need the tfoot itself to be position:sticky also */
+.table-scroll tfoot,
+.table-scroll tfoot th,
+.table-scroll tfoot td {
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
+  background: #666;
+  color: #fff;
+  z-index:4;
+}
+
+a:focus {
+  background: red;
+} /* testing links*/
+
+th:first-child {
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background: #ccc;
+}
+thead th:first-child,
+tfoot th:first-child {
+  z-index: 5;
+}
