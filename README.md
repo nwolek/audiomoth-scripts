@@ -27,6 +27,10 @@ bash make-spectrogram-movie.sh *.wav
 
 The first script in this collection provides AudioMoth recordings with a more helpful filenames based on the date and time they were captured. The original files are left unaltered and copies are made with their new filenames in a subdirectory named ```output```.
 
+<p align="center>
+          <img src="./images/demo-rename-by-date.gif" alt="screenshot demo of rename by date script" width="650"
+</p>
+
 Additional details:
 
 - To achieve this, it gets "birth time" from the ```stat``` command, which can have some [variations in syntax between operating systems](https://en.wikipedia.org/wiki/Stat_(system_call)). 
@@ -35,6 +39,10 @@ Additional details:
 ### 2. make-spectrogram-image.sh
 
 This script is used to generate basic spectrogram images of AudioMoth recordings. It generates PNG images of the whole recording that are saved alongside the original WAV files with a same filename.
+
+<p align="center>
+          <img src="./images/demo-make-spectrogram-image.gif" alt="screenshot demo of make spectrogram image script" width="650"
+</p>
 
 Additional details:
 
