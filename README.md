@@ -47,6 +47,18 @@ Additional details:
 
 ![sample output from make spectrogram image script](images/output-make-spectrogram-image.png)
 
+### 3. make-spectrogram-thumbnail.sh
+
+A variation on script number 2 that produces small thumbnail spectrograms that are useful for the web. It generates PNG images of the first 30 seconds that are saved alongside the original WAV files with a same filename.
+
+![screenshot demo of make spectrogram thumbnail script](images/demo-make-spectrogram-thumbnail.gif)
+
+Additional details:
+
+- To achieve this, the script uses both [SoX](http://sox.sourceforge.net/) and [ImageMagick](https://imagemagick.org/). Make sure these tools are installed and properly configured before using this script.
+- If a recording is shorter than 30 seconds, the whole file is used to generate the spectrogram.
+- The script actually creates a full-size image first then resizes it to produce the 128 by 72 pixels thumbnail version. The full-size 1280 by 720 pixels version is then deleted to save space, but you could easily keep it by [commenting out these lines](https://github.com/nwolek/audiomoth-scripts/blob/master/make-spectrogram-thumbnail.sh#L42).
+
 ## Acknowledgements
 
 My research into using the AudioMoth for acoustic ecology is supported by the following:
