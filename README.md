@@ -23,6 +23,15 @@ bash make-spectrogram-image.sh *.WAV
 bash make-spectrogram-movie.sh *.wav
 ```
 
+### 1. rename-by-date.sh
+
+The first script in this collection provides AudioMoth recordings with a more helpful filenames based on the date and time they were captured. The original files are left unaltered and copies are made with their new filenames in a subdirectory named ```output```.
+
+Additional notes:
+
+- To achieve this, it gets "birth time" from the ```stat``` command, which can have some [variations in syntax between operating systems](https://en.wikipedia.org/wiki/Stat_(system_call)). 
+- Since the AudioMoth uses [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), that time zone is preserved in the renaming. 
+
 ## Acknowledgements
 
 My research into using the AudioMoth for acoustic ecology is supported by the following:
