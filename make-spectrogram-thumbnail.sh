@@ -13,7 +13,7 @@
 for file in $@
 do
 
-	# strip out the filename without extension
+	# strip out the filename without path
 	without_path="${file##*/}"
 	
 	# use conditionals to make wav extension case insensitive
