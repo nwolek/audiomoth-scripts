@@ -45,6 +45,8 @@ Additional details:
 - To achieve this, the script uses [SoX](http://sox.sourceforge.net/), a cross-platform command line utility for audio operations. Make sure that SoX is installed and properly configured before using this script.
 - The images generated will be 1280 by 720 pixels, although it looks like the script asks for 1136 by 642 pixels. This is because SoX adds some padding to the images for the graph axes and unit labels. Be aware that changing the size may require some experimenting to get the right dimensions.
 
+![sample output from make spectrogram image script](images/output-make-spectrogram-image.png)
+
 ## Acknowledgements
 
 My research into using the AudioMoth for acoustic ecology is supported by the following:
