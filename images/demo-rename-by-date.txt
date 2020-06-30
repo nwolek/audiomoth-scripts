@@ -1,0 +1,8 @@
+[audiomoth-demo]$ ls 
+5EC5A158.WAV	5EC5A3B0.WAV	5EC5A608.WAV	5EC5A860.WAV
+[audiomoth-demo]$ bash rename-by-date.sh *.WAV
+[audiomoth-demo]$ cd output
+[output]$ ls
+2020-05-20-21-30-00-UTC.wav	2020-05-20-21-50-00-UTC.wav
+2020-05-20-21-40-00-UTC.wav	2020-05-20-22-00-00-UTC.wav
+[output]$ 
