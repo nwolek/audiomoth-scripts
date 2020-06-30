@@ -1,0 +1,13 @@
+[output]$ bash make-spectrogram-movie.sh 2020-05-20-22-*.wav
+
+Starting movie for 2020-05-20-22-00-00-UTC.wav...
+making spectrogram from 0 to 30 seconds...
+making spectrogram from 30 to 60 seconds...
+creating full length movie...
+[output]$ ls -g
+total 21824
+-rw-r--r--  1 staff  1176220 Jun 30 17:51 2020-05-20-22-00-00-UTC-slide0.png
+-rw-r--r--  1 staff  1160476 Jun 30 17:51 2020-05-20-22-00-00-UTC-slide1.png
+-rw-r--r--  1 staff  1115565 Jun 30 17:51 2020-05-20-22-00-00-UTC.mp4
+-rwxr-xr-x  1 staff  5760192 Jun 30 17:35 2020-05-20-22-00-00-UTC.wav
+[output]$ 

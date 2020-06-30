@@ -110,6 +110,40 @@ Additional details:
 - If a recording is shorter than 30 seconds, the whole file is used to generate the spectrogram.
 - The script actually creates a full-size image first then resizes it to produce the 128 by 72 pixels thumbnail version. The full-size 1280 by 720 pixels version is then deleted to save space, but you could easily keep it by [commenting out these lines](https://github.com/nwolek/audiomoth-scripts/blob/master/make-spectrogram-thumbnail.sh#L42).
 
+### 4. make-spectrogram-movie.sh
+
+This script creates a spectrogram slideshow and pairs it with the original audio to produce an MP4 movie file. Each slide visualizes 30 seconds of sound and displays information about when and where the audio was captured.
+
+Example:
+
+```console
+[output]$ bash make-spectrogram-movie.sh 2020-05-20-22-*.wav
+
+Starting movie for 2020-05-20-22-00-00-UTC.wav...
+making spectrogram from 0 to 30 seconds...
+making spectrogram from 30 to 60 seconds...
+creating full length movie...
+[output]$ ls -g
+total 21824
+-rw-r--r--  1 staff  1176220 Jun 30 17:51 2020-05-20-22-00-00-UTC-slide0.png
+-rw-r--r--  1 staff  1160476 Jun 30 17:51 2020-05-20-22-00-00-UTC-slide1.png
+-rw-r--r--  1 staff  1115565 Jun 30 17:51 2020-05-20-22-00-00-UTC.mp4
+-rwxr-xr-x  1 staff  5760192 Jun 30 17:35 2020-05-20-22-00-00-UTC.wav
+[output]$ 
+```
+
+Additional details:
+
+- To achieve this, the script uses both [SoX](http://sox.sourceforge.net/), [ImageMagick](https://imagemagick.org/) and [ffmpeg](https://ffmpeg.org/). Make sure these tools are installed and properly configured before using this script.
+- This script expects the filenames that are output from rename-by-date.sh, so make sure you run that script first. The date and time of recording for the text on each slide is actually taken from the filename.
+- Information about the recording location is set by [these two variables at the top](https://github.com/nwolek/audiomoth-scripts/blob/master/make-spectrogram-movie.sh#L21) of the bash script. 
+
+Output:
+
+![sample output from make spectrogram movie script](images/output-make-spectrogram-movie-slide.png)
+
+[View movie on YouTube.](https://www.youtube.com/watch?v=BkSST3gdyWI)
+
 ## Acknowledgements
 
 My research into using the AudioMoth for acoustic ecology is supported by the following:
