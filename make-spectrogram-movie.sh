@@ -54,7 +54,7 @@ do
 		
 		# add text to the bottom of the .png image
 		date_text=$(date -j -f "%s" $timestamp_at_recording)
-		convert "$without_extension$png_suffix".png -gravity south -fill white -pointsize 36 -annotate +0+10 "$location_text ($gps_text)\n$date_text" "$without_extension$png_suffix".png
+		convert "$without_extension$png_suffix".png -gravity south -fill white -pointsize 36 -annotate +0+10 "$location_text ($gps_text)\n$date_text" "$without_extension-slide$png_suffix".png
 		
 		# update variables for next 30 second segment
 		let png_suffix++
