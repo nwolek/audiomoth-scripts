@@ -142,3 +142,21 @@ echo \<\/div\> >> index.html
 # close the html document
 echo \<\/body\> >> index.html
 echo \<\/html\> >> index.html
+
+# copy the CSS file if it's missing
+css_file="spectrogram-table.css"
+if [[ ! -f "$css_file" ]]; then
+
+	# where is this bash script source located?
+	directory_audiomoth_scripts="$( dirname "${BASH_SOURCE[0]}" )"
+	
+	# where is the bash script running?
+	directory_current=$(pwd)
+	
+	# if the file exists in the script source location, then copy it
+	if [[ -f "$directory_audiomoth_scripts/$css_file" ]]; then
+		cp "$directory_audiomoth_scripts/$css_file" "$directory_current/$css_file"
+	else
+		echo "Could not copy spectrogram-table.css - HTML formatting will not match expectations"
+	fi
+fi
