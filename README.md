@@ -144,6 +144,29 @@ Output:
 
 [View movie on YouTube.](https://www.youtube.com/watch?v=BkSST3gdyWI)
 
+### 5. make-html-table.sh
+
+This script is used to create an HTML interface for reviewing spectrograms in a collection of AudioMoth recordings. It does this by generating an ```index.html``` file that contains a table of thumbnail images organized with dates in columns and times in rows. 
+
+Example:
+
+```console
+[output]$ find *.wav | wc -l # how many wav files?
+    2297
+[output]$ bash make-html-table.sh *.wav
+[output]$ open index.html
+[output]$ 
+```
+
+Additional details:
+
+- This script expects the filenames from ```rename-by-date.sh``` and thumbnails from ```make-spectrogram-thumbnail.sh```, so make sure you run those scripts first. The dates and times used for constructing the table are actually taken from the filenames, so this script will not work on the unaltered AudioMoth recordings.
+- Several formatting features of the HTML table depend on [the ```spectrogram-table.css``` file included in this repo](https://github.com/nwolek/audiomoth-scripts/blob/master/spectrogram-table.css). It was adapted from [this CodePen example by Paul O'Brien](https://codepen.io/paulobrien/pen/LBrMxa).
+
+Output:
+
+![sample output from make html table script](images/output-make-html-table.png)
+
 ## Acknowledgements
 
 My research into using the AudioMoth for acoustic ecology is supported by the following:

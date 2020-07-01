@@ -1,0 +1,6 @@
+[output]$ find *.wav | wc -l # how many wav files?
+    2297
+[output]$ bash make-html-table.sh *.wav
+[output]$ open index.html
+[output]$ 
+
