@@ -1,9 +1,11 @@
 # audiomoth-scripts
+**By Nathan Wolek - [@LowkeyNW](http://twitter.com/lowkeynw) - [http://nathanwolek.com](http://www.nathanwolek.com)**
+
 A small collection of bash scripts for audio collected by the AudioMoth acoustic monitoring device.
 
 ## Background
 
-The [AudioMoth](https://www.openacousticdevices.info/) is a small, programmable audio recorder designed for acoustic monitoring. I began developing these scripts to analyze and visualize the audio collected using an AudioMoth. I am not affiliated with [Open Acoustic Devices](https://www.openacousticdevices.info/home), producers of the AudioMoth.
+The [AudioMoth](https://www.openacousticdevices.info/) is a small, programmable audio recorder designed for acoustic monitoring. I began developing these scripts to analyze, visualize, and share the audio I collected using the AudioMoth. I am not affiliated with [Open Acoustic Devices](https://www.openacousticdevices.info/home), producers of the AudioMoth. Any questions about the device itself should be directed to them.
 
 ## Requirements
 
@@ -13,7 +15,7 @@ These scripts require the following command line tools:
 - [ImageMagick](https://imagemagick.org/) - "create, edit, compose, or convert bitmap images"
 - [ffmpeg](https://ffmpeg.org/) - "solution to record, convert and stream audio and video"
 
-## Basic Usage
+## How to Use
 
 These scripts are designed to work on files in batches, using syntax like the following:
 
@@ -77,6 +79,8 @@ Additional details:
 - To achieve this, the script uses [SoX](http://sox.sourceforge.net/), a cross-platform command line utility for audio operations. Make sure that SoX is installed and properly configured before using this script.
 - The images generated will be 1280 by 720 pixels, although it looks like the script asks for 1136 by 642 pixels. This is because SoX adds some padding to the images for the graph axes and unit labels. Be aware that changing the size may require some experimenting to get the right dimensions.
 
+Output:
+
 ![sample output from make spectrogram image script](images/output-make-spectrogram-image.png)
 
 ### 3. make-spectrogram-thumbnail.sh
@@ -135,7 +139,7 @@ total 21824
 Additional details:
 
 - To achieve this, the script uses both [SoX](http://sox.sourceforge.net/), [ImageMagick](https://imagemagick.org/) and [ffmpeg](https://ffmpeg.org/). Make sure these tools are installed and properly configured before using this script.
-- This script expects the filenames that are output from rename-by-date.sh, so make sure you run that script first. The date and time of recording for the text on each slide is actually taken from the filename.
+- This script expects the filenames that are output from ```rename-by-date.sh```, so make sure you run that script first. The date and time of recording for the text on each slide is actually taken from the filename.
 - Information about the recording location is set by [these two variables at the top](https://github.com/nwolek/audiomoth-scripts/blob/master/make-spectrogram-movie.sh#L21) of the bash script. 
 
 Output:
