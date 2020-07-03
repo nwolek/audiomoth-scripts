@@ -1,11 +1,13 @@
 # audiomoth-scripts
 **By Nathan Wolek - [@LowkeyNW](http://twitter.com/lowkeynw) - [http://nathanwolek.com](http://www.nathanwolek.com)**
 
-A small collection of bash scripts for audio collected by the AudioMoth acoustic monitoring device.
+A small collection of Bash scripts for audio collected by the AudioMoth acoustic monitoring device.
 
 ## Background
 
-The [AudioMoth](https://www.openacousticdevices.info/) is a small, programmable audio recorder designed for acoustic monitoring. I began developing these scripts to analyze, visualize, and share the audio I collected using the AudioMoth. I am not affiliated with [Open Acoustic Devices](https://www.openacousticdevices.info/home), producers of the AudioMoth. Any questions about the device itself should be directed to them.
+The [AudioMoth](https://www.openacousticdevices.info/) is a small, programmable audio recorder designed for acoustic monitoring. After deploying my AudioMoths for several weeks during Florida's COVID-19 Stay at Home order, I began developing these scripts to analyze, visualize, and share the audio I collected. I am not affiliated with [Open Acoustic Devices](https://www.openacousticdevices.info/home), producers of the AudioMoth. Any questions about the device itself should be directed to them.
+
+I realize that many users of the AudioMoth may have minimal experience using the [Bash shell](https://en.wikipedia.org/wiki/Bash_(Unix_shell)). Therefore, I have done my best to clearly document the steps for using these scripts in hopes of encouraging more people in [acoustic ecology](https://en.wikipedia.org/wiki/Acoustic_ecology) and [bioacoustics](https://en.wikipedia.org/wiki/Bioacoustics) to explore this amazing tool for batch processing large collections of audio files. If you are looking for a good general resource for learning more about the Bash shell, I highly recommend [The Missing Semester](https://missing.csail.mit.edu/), a collection of lessons by 3 MIT grad students. 
 
 ## Requirements
 
