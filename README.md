@@ -9,13 +9,51 @@ The [AudioMoth](https://www.openacousticdevices.info/) is a small, programmable 
 
 I realize that many users of the AudioMoth may have minimal experience using the [Bash shell](https://en.wikipedia.org/wiki/Bash_(Unix_shell)). Therefore, I have done my best to clearly document the steps for using these scripts in hopes of encouraging more people in [acoustic ecology](https://en.wikipedia.org/wiki/Acoustic_ecology) and [bioacoustics](https://en.wikipedia.org/wiki/Bioacoustics) to explore this amazing tool for batch processing large collections of audio files. If you are looking for a good general resource for learning more about the Bash shell, I highly recommend [The Missing Semester](https://missing.csail.mit.edu/), a collection of lessons by 3 MIT grad students. 
 
-## Requirements
+## How to Install
 
 These scripts require the following command line tools:
 
 - [SoX](http://sox.sourceforge.net/) - "the Swiss Army knife of sound processing programs"
 - [ImageMagick](https://imagemagick.org/) - "create, edit, compose, or convert bitmap images"
 - [ffmpeg](https://ffmpeg.org/) - "solution to record, convert and stream audio and video"
+
+If you are an *experienced shell user* who already has these tools installed and configured, you can easily add the AudioMoth scripts to your home folder using something like following commands:
+
+```
+cd ~/bin
+git clone https://github.com/nwolek/audiomoth-scripts.git
+echo -e "PATH=\"\$PATH\":\"~/bin/audiomoth-scripts\"" >> ~/.bash_profile
+```
+
+If you are an *occasional shell user* on the MacOS or Windows, you will have a few more steps. Microsoft has recently provided a [Terminal for Windows users](https://devblogs.microsoft.com/commandline/introducing-windows-terminal/), but I have no experience with it. MacOS users can access the shell via the built-in [Terminal application](https://support.apple.com/guide/terminal/open-or-quit-terminal-apd5265185d-f365-44cb-8b09-71a064a42125/mac), which is the method I use. I have checked the following steps on MacOS 10.14 Mojave.
+
+Once you are in the terminal, I recommend [installing Homebrew](https://brew.sh/), which allows you to more easily add command line tools. If you go this route, you can have the required tools for the AudioMoth scripts installed by stepping through the following commands:
+
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+brew install sox
+brew install imagemagick
+brew install ffmpeg
+brew install git
+```
+
+After that, you can install the AudioMoth scripts in your home directory. It's good practice to keep your Bash scripts together in a folder called ```bin```. You can create that folder and download the AudioMoth scripts like this:
+
+```
+cd ~
+mkdir bin
+cd bin
+git clone https://github.com/nwolek/audiomoth-scripts.git
+```
+
+Finally, you will want to add these scripts to your search path. This saves you from having to type the whole path every time you want to run the script. You can add the relevant folders to your search path using the following commands:
+
+```
+echo -e "PATH=\"\$PATH\":\"~/bin\"" >> ~/.bash_profile
+echo -e "PATH=\"\$PATH\":\"~/bin/audiomoth-scripts\"" >> ~/.bash_profile
+```
+
+That should finish the installation!
 
 ## How to Use
 
