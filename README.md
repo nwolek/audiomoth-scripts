@@ -17,7 +17,7 @@ These scripts require the following command line tools:
 - [ImageMagick](https://imagemagick.org/) - "create, edit, compose, or convert bitmap images"
 - [ffmpeg](https://ffmpeg.org/) - "solution to record, convert and stream audio and video"
 
-If you are an *experienced shell user* who already has these tools installed and configured, you can easily add the AudioMoth scripts to your home folder using something like following commands:
+If you are an **experienced shell user** who already has these tools installed and configured, you can easily add the AudioMoth scripts to your home folder using something like following commands:
 
 ```
 cd ~/bin
@@ -25,7 +25,7 @@ git clone https://github.com/nwolek/audiomoth-scripts.git
 echo -e "PATH=\"\$PATH\":\"~/bin/audiomoth-scripts\"" >> ~/.bash_profile
 ```
 
-If you are an *occasional shell user* on the MacOS or Windows, you will have a few more steps. Microsoft has recently provided a [Terminal for Windows users](https://devblogs.microsoft.com/commandline/introducing-windows-terminal/), but I have no experience with it. MacOS users can access the shell via the built-in [Terminal application](https://support.apple.com/guide/terminal/open-or-quit-terminal-apd5265185d-f365-44cb-8b09-71a064a42125/mac), which is the method I use. I have checked the following steps on MacOS 10.14 Mojave.
+If you are an **occasional shell user** on the MacOS or Windows, you will have a few more steps. Microsoft has recently provided a [Terminal for Windows users](https://devblogs.microsoft.com/commandline/introducing-windows-terminal/), but I have no experience with it. MacOS users can access the shell via the built-in [Terminal application](https://support.apple.com/guide/terminal/open-or-quit-terminal-apd5265185d-f365-44cb-8b09-71a064a42125/mac), which is the method I use. I have checked the following steps on MacOS 10.14 Mojave.
 
 Once you are in the terminal, I recommend [installing Homebrew](https://brew.sh/), which allows you to more easily add command line tools. If you go this route, you can have the required tools for the AudioMoth scripts installed by stepping through the following commands:
 
