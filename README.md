@@ -3,6 +3,8 @@
 
 A small collection of Bash scripts for audio collected by the AudioMoth acoustic monitoring device.
 
+_**IMPORTANT NOTE:** These scripts were designed to work with recordings from an early version of the AudioMoth firmware. More recent versions no longer use the hexadecimal file names (e.g., 5EC5A158.WAV). I'll be working on an update for the new system in the near future._
+
 ## Background
 
 The [AudioMoth](https://www.openacousticdevices.info/) is a small, programmable audio recorder designed for acoustic monitoring. After deploying my AudioMoths for several weeks during Florida's COVID-19 Stay at Home order, I began developing these scripts to analyze, visualize, and share the audio I collected. I am not affiliated with [Open Acoustic Devices](https://www.openacousticdevices.info/home), producers of the AudioMoth. Any questions about the device itself should be directed to them.
