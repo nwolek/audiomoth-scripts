@@ -28,7 +28,7 @@ do
 		# generate the initial .png spectrogram output from sox
 		# dimension here are for spectrogram only, extra padding will result in 1280 x 720 image
 		echo "making spectrogram for $without_path..."
-		sox "$file" -n trim 0 $total_duration spectrogram -x 1136 -y 642 -z 96 -w hann -a -o "$without_extension".png
+		sox "$file" -n rate 24k trim 0 $total_duration spectrogram -x 1136 -y 642 -z 60 -Z -12 -w hann -a -o "$without_extension".png
 	
 	else
 		echo "skipped $without_path - not a wav file!"

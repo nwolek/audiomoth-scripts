@@ -17,10 +17,11 @@ gpsdock="29.001019, -81.355588"
 gpswood="29.000200, -81.354673"
 gpspost14="28.894215, -80.808166"
 gpspost10="28.895521, -80.806730"
+gpseldoradock="28.909534, -80.820955"
 
 # set variables used when generating text
 location_text=$canaveraltext
-gps_text=$gpspost14
+gps_text=$gpseldoradock
 
 # iterate through all arguments 
 for file in $@
@@ -31,7 +32,7 @@ do
 	without_extension="${without_path%.wav}"
 	
 	# interpret the filename as a timestamp 
-	timestamp_at_recording=$(TZ=UTC date -j -f "%Y-%m-%d-%H-%M-%S-UTC" "$without_extension" +%s)
+	timestamp_at_recording=$(TZ=UTC date -j -f "%Y%m%d-%H%M%S-UTC" "$without_extension" +%s)
 	
 	echo ""
 	echo "Starting movie for $without_path..."

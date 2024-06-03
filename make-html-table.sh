@@ -14,19 +14,19 @@
 first_time="${1%.wav}"
 last_time="${BASH_ARGV%.wav}"
 
-# setup var to collect all times in HH-MM format
-all_hh_mm=""
+# setup var to collect all times in HH-MM-SS format
+all_hh_mm_ss=""
 
 # setup var to collect all dates in YYYY-MM-DD format
 all_dates=""
 
 for file in $@
 do
-	# get hours & minutes from each filename in HH-MM format
-	new_time=${file:11:5}
+	# get hours & minutes from each filename in HH-MM-SS format
+	new_time=${file:11:8}
 	
 	# add to the end of list
-	all_hh_mm="$all_hh_mm $new_time"
+	all_hh_mm_ss="$all_hh_mm_ss $new_time"
 	
 	# get calendar date from each filename in YYYY-MM-DD format
 	new_date=${file:0:10}
@@ -41,18 +41,18 @@ done
 ##echo $all_dates
 
 ##echo "The complete list of times:"
-##echo $all_hh_mm
+##echo $all_hh_mm_ss
 
 # filter repetitions so that only unique values remain
 unique_dates=$(echo $all_dates | tr ' ' '\n' | sort -u)
-unique_hh_mm=$(echo $all_hh_mm | tr ' ' '\n' | sort -u)
+unique_hh_mm_ss=$(echo $all_hh_mm_ss | tr ' ' '\n' | sort -u)
 
 # these echo statements were used for testing
 ##echo "The unique dates are:"
 ##echo $unique_dates
 
 ##echo "The unique times are:"
-##echo $unique_hh_mm
+##echo $unique_hh_mm_ss
 
 # delete old version if it exists
 if [[ -f "index.html" ]]; then
@@ -93,24 +93,26 @@ echo \<\/thead\> >> index.html
 # create the other rows
 echo \<tbody\> >> index.html
 
-for each_hh_mm in $unique_hh_mm; do
+for each_hh_mm_ss in $unique_hh_mm_ss; do
 	
 	echo \<tr\> >> index.html
 	
 	# first table cell in row contains the time
 	# mark 00 minute as start of hour
-	if [[ ${each_hh_mm:3:2} = "00" ]]; then
+	if [[ ${each_hh_mm_ss:3:2} = "00" ]]; then
 		echo -n \<th class=\"start-of-hour\"\> >> index.html
 	else
 		echo -n \<th\> >> index.html
 	fi
-	echo ${each_hh_mm:0:2}:${each_hh_mm:3:2} UTC\<\/th\> >> index.html
+	echo ${each_hh_mm_ss:0:2}:${each_hh_mm_ss:3:2} UTC\<\/th\> >> index.html
 
 	# other table cells in row contain thumbnail spectrogram images
 	for each_date in $unique_dates; do
 	
-		# assemble the timestamp from $each_date & $each_hh_mm
-		each_timestamp_assembled="$each_date-$each_hh_mm-00-UTC"
+		# assemble the timestamp from $each_date & $each_hh_mm_ss
+		each_timestamp_assembled="$each_date-$each_hh_mm_ss-UTC"
+		
+		echo "looking for date $each_timestamp_assembled..."
 		
 		# which day of the week?
 		day_of_week=$(date -j -f "%Y-%m-%d-%H-%M-%S-UTC" "+%a" $each_timestamp_assembled)
