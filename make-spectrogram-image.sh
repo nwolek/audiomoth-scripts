@@ -9,6 +9,20 @@
 # expected input .wav files (upper or lower case extension) produced by the AudioMoth
 # expected output .png files visualizing entire .WAV file
 
+# variables for setting output options quickly
+# dynamic range in dBFS, values can be between 10 to 200
+dynamic_range=72
+# highest frequency in Hertz
+highest_freq=10000
+# lowest frequency in Hertz
+lowest_freq=0
+# gain scale, typically switch between linear "lin" or logarithmic "log"
+gain_scale="log"
+# frequency scale, switch between linear "lin" or logarithmic "log"
+freq_scale="lin"
+# color scheme, personal favorite options are cool, fruit, fiery, green
+color_choice="fruit"
+
 # iterate through all arguments
 for file in $@
 do
@@ -22,13 +36,10 @@ do
 		# strip the extension
 		without_extension="${without_path%.*}"
 	
-		total_duration=$(soxi -D "$without_path") # get the duration in seconds
-		total_duration=${total_duration%.*} # convert to integer
-
-		# generate the initial .png spectrogram output from sox
+		# generate the initial .png spectrogram output from ffmpeg
 		# dimension here are for spectrogram only, extra padding will result in 1280 x 720 image
 		echo "making spectrogram for $without_path..."
-		sox "$file" -n rate 24k trim 0 $total_duration spectrogram -x 1136 -y 642 -z 60 -Z -12 -w hann -a -o "$without_extension".png
+		ffmpeg -i $without_path -lavfi showspectrumpic=s=996x592:legend=enable:start=$lowest_freq:stop=$highest_freq:fscale=$freq_scale:color=$color_choice:drange=$dynamic_range:scale=$gain_scale -v quiet "$without_extension".png
 	
 	else
 		echo "skipped $without_path - not a wav file!"
