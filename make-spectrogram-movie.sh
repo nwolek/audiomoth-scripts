@@ -7,7 +7,6 @@
 # BEGUN - 30 April 2020
 # GOAL - generate movies that pair audio with spectrograms of their content
 # expected input .wav files (lower case extension) from rename-by-date.sh script
-# expected output multiple .png files, each visualizing 30 second segments of .wav file
 # expected output single .mp4 for entire .wav file
 
 # variables for setting output options quickly
@@ -44,32 +43,6 @@ do
 	
 	echo ""
 	echo "Starting movie for $without_path..."
-
-	# total_duration=$(soxi -D "$without_path") # get the duration in seconds
-	# total_duration=${total_duration%.*} # convert to integer
-	# let total_duration=$total_duration-30 # subtract the last 30 seconds
-	# png_suffix=0 # set the suffix to initial value
-	
-	# create individual spectrogram for each 30 second segment of the .wav file
-	# for current_file_time in $(seq 0 30 $total_duration); 
-	# do
-	# 	echo "making spectrogram from $current_file_time to $(( $current_file_time + 30 )) seconds..."
-		
-		# generate the initial .png spectrogram output from sox
-	# 	sox "$file" -n rate 24k trim $current_file_time 30 spectrogram -x 1136 -y 542 -z 96 -w hann -o "$without_extension$png_suffix".png
-		
-		# extend the .png canvas size to match 720p dimensions and make room for text 
-	# 	convert "$without_extension$png_suffix".png -background black -gravity north -extent 1280x720 "$without_extension$png_suffix".png
-		
-		# add text to the bottom of the .png image
-	# 	date_text=$(date -j -f "%s" $timestamp_at_recording)
-	# 	convert "$without_extension$png_suffix".png -gravity south -fill white -pointsize 36 -annotate +0+10 "$location_text ($gps_text)\n$date_text" "$without_extension-slide$png_suffix".png
-		
-		# update variables for next 30 second segment
-	# 	let png_suffix++
-	# 	timestamp_at_recording=$(( $timestamp_at_recording + 30 ))
-	
-	# done
 	
 	# generates spectrogram video using original .wav audio to create .mp4 movie
 	echo "creating full length movie..."
