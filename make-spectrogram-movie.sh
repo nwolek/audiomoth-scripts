@@ -28,8 +28,8 @@ color_choice="cool"
 slide_choice="scroll"
 
 # set variables used when generating text
-location_text="Canaveral National Seashore, Florida"
-gps_text="28.909534, -80.820955"
+location_text="Purchase Knob, NC USA"
+gps_text="35.5858847,-83.0735405"
 
 # iterate through all arguments 
 for file in $@
@@ -71,13 +71,15 @@ do
 	
 	# done
 	
-	# combines original .wav audio with .png spectrograms to create .mp4 movie
+	# generates spectrogram video using original .wav audio to create .mp4 movie
 	echo "creating full length movie..."
 	ffmpeg -i $without_extension.wav -filter_complex \
 		"[0:a]showspectrum=s=996x592:legend=enable:start="$lowest_freq":stop="$highest_freq":scale="$freq_scale":color="$color_choice":drange="$dynamic_range":scale="$gain_scale":slide="$slide_choice",format=yuv420p[v]" \
 		-map "[v]" -map 0:a -v verbose $without_extension-no-text.mp4
-	# if a shortened copy of .mp4 movie is needed for something like social media, use something like the following 
-	##echo "creating 60-sec edit of movie..."
-	##ffmpeg -loglevel panic -framerate 1/30 -i "$without_extension"%d.png -i "$without_extension".wav -c:v libx264 -pix_fmt yuv420p -t 60 "$without_extension"-60sec.mp4
+		
+	# adds location text to newly generated .mp4 movie 
+	echo "adding text to movie..."
+	full_header_text="$location_text ($gps_text)"
+	ffmpeg -i $without_extension-no-text.mp4 -vf "drawtext=text='$full_header_text':x=25:y=25:fontsize=24:fontcolor=white" -c:a copy $without_extension.mp4
 		
 done
