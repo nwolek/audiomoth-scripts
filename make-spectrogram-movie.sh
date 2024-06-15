@@ -39,20 +39,27 @@ do
 	without_extension="${without_path%.wav}"
 	
 	# interpret the filename as a timestamp 
-	# timestamp_at_recording=$(TZ=UTC date -j -f "%Y%m%d-%H%M%S-UTC" "$without_extension" +%s)
+	timestamp_at_recording=$(date -j -f "%Y%m%d_%H%M%S" "$without_extension" +%s)
+	date_text=$(date -j -f "%s" $timestamp_at_recording +"%d %B %Y")
+	time_text=$(date -j -f "%s" $timestamp_at_recording +"%H\:%M\:%S")
 	
 	echo ""
-	echo "Starting movie for $without_path..."
+	echo "Creating spectrogram movie for $without_path"
+	echo "	Timestamp at start is $timestamp_at_recording"
+	echo "	Date at start is $date_text"
+	echo "	Time at start is $time_text"
 	
 	# generates spectrogram video using original .wav audio to create .mp4 movie
-	echo "creating full length movie..."
+	echo "	Creating full length movie at $without_extension.mp4..."
 	full_header_text="$location_text ($gps_text)"
+	full_date_text="$date_text at $time_text"
 	ffmpeg -i $without_extension.wav -filter_complex \
 		"[0:a]showspectrum=s=996x592:legend=enable:start="$lowest_freq":stop="$highest_freq":scale="$freq_scale":color="$color_choice":drange="$dynamic_range":scale="$gain_scale":slide="$slide_choice",
 		drawtext=text='$full_header_text':x=25:y=25:fontsize=24:fontcolor=white,
-		drawtext=text='16 May 2024':x=W-tw-25:y=25:fontsize=24:fontcolor=white,
+		drawtext=text='$full_date_text':x=W-tw-25:y=25:fontsize=24:fontcolor=white,
 		format=yuv420p[v]" \
 		-map "[v]" -map 0:a -v verbose $without_extension.mp4
+	echo "	Done!"
 		
 	# adds location text to newly generated .mp4 movie 
 	#echo "adding text to movie..."
