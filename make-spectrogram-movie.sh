@@ -46,13 +46,17 @@ do
 	
 	# generates spectrogram video using original .wav audio to create .mp4 movie
 	echo "creating full length movie..."
+	full_header_text="$location_text ($gps_text)"
 	ffmpeg -i $without_extension.wav -filter_complex \
-		"[0:a]showspectrum=s=996x592:legend=enable:start="$lowest_freq":stop="$highest_freq":scale="$freq_scale":color="$color_choice":drange="$dynamic_range":scale="$gain_scale":slide="$slide_choice",format=yuv420p[v]" \
-		-map "[v]" -map 0:a -v verbose $without_extension-no-text.mp4
+		"[0:a]showspectrum=s=996x592:legend=enable:start="$lowest_freq":stop="$highest_freq":scale="$freq_scale":color="$color_choice":drange="$dynamic_range":scale="$gain_scale":slide="$slide_choice",
+		drawtext=text='$full_header_text':x=25:y=25:fontsize=24:fontcolor=white,
+		drawtext=text='16 May 2024':x=W-tw-25:y=25:fontsize=24:fontcolor=white,
+		format=yuv420p[v]" \
+		-map "[v]" -map 0:a -v verbose $without_extension.mp4
 		
 	# adds location text to newly generated .mp4 movie 
-	echo "adding text to movie..."
-	full_header_text="$location_text ($gps_text)"
-	ffmpeg -i $without_extension-no-text.mp4 -vf "drawtext=text='$full_header_text':x=25:y=25:fontsize=24:fontcolor=white" -c:a copy $without_extension.mp4
+	#echo "adding text to movie..."
+	#
+	#ffmpeg -i $without_extension-no-text.mp4 -vf "drawtext=text='$full_header_text':x=25:y=25:fontsize=24:fontcolor=white" -c:a copy $without_extension.mp4
 		
 done
